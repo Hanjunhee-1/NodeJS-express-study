@@ -1,0 +1,29 @@
+Node Package Manager 의 약자
+
+node 에 존재하는 모듈을 관리해줌.
+
+node_modules 를 사용하기 위해서는 아래와 같은 명령어를 입력해야 함.
+
+1. npm init
+--> package.json 이 생성됨.
+(여러 설정들이 나오는데 맞춰서 하면됨.)
+만약, 귀찮다면 npm init -y 를 입력.
+
+2. npm install [모듈명]
+모듈을 추가해서 사용할 수 있게 해줌.
+package.json 에 dependency 가 추가됨.
+
+★ package.json 에 devDependencies 는 뭐임..?
+--> 그냥 dependencies 는 배포할 때 꼭 필요한 모듈들에 대한 정보를 모아놓은 것이고 devDependencies 는 개발할 때 꼭 필요한 모듈들에 대한 정보를 모아놓은 것이다.
+npm install [모듈명] --> dependencies 에 추가됨.
+＊원래는 npm install [모듈명] --save 명령어를 해줘야 하지만 npm 버전 5 이상부터는 '--save' 를 굳이 안해줘도 된다.
+npm install [모듈명] --save-dev --> devDependencies 에 추가됨.
+
+★ package-lock.json 은 왜 있음...?
+--> package.json 에 자신이 설치한 모듈에 대한 모든 정보가 다 들어있는 것은 아님... 모듈에 대한 좀 더 자세한 정보를 담아주는 것이라고 생각하면 됨.
+
+
+
+
+
+대충 위의 내용 정도만 알고 있으면 크게 문제 없을듯

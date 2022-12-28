@@ -1,0 +1,36 @@
+express 를 사용하기 위해서는 express 모듈을 설치해야 한다.
+
+npm install express
+
+위의 명령어를 입력하면 package.json 에 express 에 대한 dependency 가 추가된다.
+
+
+express 모듈을 사용하는 방법은 아래와 같다.
+
+const express = require("express");
+const app = express();
+
+굳이 app 이라는 이름의 변수가 아니어도 되고 express 라는 이름의 변수가 아니어도 되지만
+위의 방법이 정통법이다.
+
+
+★ 간단하게 서버를 돌리고 화면을 띄워보자!
+    사용자가 웹의 화면을 보는 방법은 GET 방법이다. 때문에 express 모듈의 get() 이라는 method 를 활용하여 원하는 화면을 띄울 수 있다.
+    예시는 아래와 같다.
+
+    app.get("/", (req, res) => {
+        res.send("메인 페이지입니다.");
+    })
+
+    첫 번째 매개변수로 route 즉, 경로를 넘겨주고 두 번째 매개변수로는 실제 화면에 보여주기 위한 함수를 넘겨주는데
+    그 함수의 매개변수는 request 와 response 가 있다. 화면에 출력해주기 위해서는 response 의 매개변수를 활용하여
+    res.send() 로 화면에 출력해줄 수 있다.
+
+    
+    서버를 실행시키기 위해서는 port 번호도 필요하고 ip 에 대한 정보도 필요하다. 보통은 로컬에서 실행시키기 때문에 아래와 같은 예시로 할 수 있다.
+    app.listen(3000, () => {
+        console.log(`Server is running at http://localhost:3000`);
+    })
+
+    console.log() --> 이 부분은 굳이 필요없지만 실행되고 있는지 아닌지 쉽게 판별하기 위해 적어준다. 실제로는
+    app.listen(3000); 이렇게만 해도 localhost:3000 에서 잘 실행되고 있다.

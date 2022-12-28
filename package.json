@@ -1,0 +1,18 @@
+{
+  "name": "nodejs_study",
+  "version": "1.0.0",
+  "description": "nodejs 공부하려고 만든 폴더",
+  "main": "./ExpressStudy/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hanjuni857",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jade": "^0.29.0",
+    "supervisor": "^0.12.0",
+    "underscore": "^1.13.6"
+  },
+  "keywords": []
+}
