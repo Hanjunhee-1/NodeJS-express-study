@@ -1,0 +1,28 @@
+우선, 이전에는 템플릿 엔진을 jade 를 사용해왔는데
+ejs 가 더 편한것 같아서 바꿨다.
+
+
+
+post 방식으로 요청을 하기 위해서는 아래의 코드가 필요하다.
+app.use(express.urlendcoded({extended: true}))
+
+post 요청을 보낼 경우 html 태그에서 body 태그 안에 있는 것을 서버로 보내게 되는데
+request 에서 body 는 값이 있다고 하더라도 undefined 로 표시된다고 한다.
+때문에 undefined 라고 되어있는 값을 읽기 위해 저 코드가 필요하다.
+
+※ 원래는 npm install body-parser 를 입력하여 body-parser 모듈을 설치하는 방법이
+    기본적으로 많이 쓰였지만 package-lock.json 에 있길래 굳이 따로 설치하지 않고
+    express 모듈을 활용했다.
+
+
+post 요청시 받는 body 에 담긴 데이터는 req.body 로 접근하여 값을 얻을 수 있다.
+
+프론트엔드에서 form 태그를 통해 값을 백엔드로 넘겨줄텐데 이때 form 태그에서 
+input 태그가 쓰일 것이다. input 태그에서 name 속성의 값이 req.body 에 담기게 될 것이다.
+
+백엔드 즉, 서버에서는 req.body 에 담긴 값들을 잘 활용하여 그에 맞는 화면을 보여주거나
+액션을 취하면 된다. 
+
+CRUD 작업 중에서 get 은 R(조회), post 는 C(생성) 의 기능을 한다고 생각하면 된다.
+
+자세한 것은 6_express포스트방식 디렉토리의 내용을 확인하자!
