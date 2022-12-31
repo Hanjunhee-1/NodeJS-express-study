@@ -7,10 +7,22 @@
     <title>new!!</title>
 </head>
 <body>
-    <form action="/topic" method="post">
-        <p><input type="text" name="title" placeholder="title"></p>
-        <p><textarea name="description" cols="30" rows="10" placeholder="Write a description"></textarea></p>
-        <p><input type="submit" value="제출"></p>
-    </form>
+    <h1>Server Side JavaScript</h1>
+    <ul>
+        <% for(var i = 0; i < topics.length; i++) { %>
+            <li>
+                <a href='/topic/<%=topics[i]%>'>
+                    <%=topics[i] %>
+                </a>
+            </li>
+        <% } %>
+    </ul>
+    <article>
+        <form action="/topic" method="post">
+            <p><input type="text" name="title" placeholder="title"></p>
+            <p><textarea name="description" cols="30" rows="10" placeholder="Write a description"></textarea></p>
+            <p><input type="submit" value="제출"></p>
+        </form> 
+    </article>
 </body>
 </html>

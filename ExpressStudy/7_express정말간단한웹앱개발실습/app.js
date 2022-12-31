@@ -11,13 +11,43 @@ app.get("/", (req, res) => {
     res.redirect("http://localhost:3000/topic");
 });
 
-app.get("/topic", (req, res) => {
+// 바로 아래 route 와 겹치지만 위에서부터 실행하기 때문에 /topic/new 는 이걸 실행하게 됨
+app.get("/topic/new", (req, res) => {
     fs.readdir('./data', (err, files) => {
         if (err) {
             console.log(err);
             res.status(500).send('Internal Server Error X(');
         }
-        res.render('view', {topics: files});
+        res.render('new', {topics: files});
+    })
+})
+
+app.get(["/topic", "/topic/:title"], (req, res) => {
+    var title = req.params.title;
+    fs.readdir('./data', (err, files) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal Server Error X(');
+        }
+        if (title) {
+            fs.readFile('./data/' + title, 'utf-8', (err, data) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send('Internal Server Error X(');
+                }
+                res.render('view', {
+                    topics: files,
+                    title: title,
+                    description: data
+                })
+            })
+        } else {
+            res.render('view', {
+                topics: files,
+                title: 'Welcome',
+                description: 'Hello :) JavaScript for server'
+            })
+        }
     })
 })
 
@@ -31,27 +61,6 @@ app.post("/topic", (req, res) => {
         }
         res.render('success');
     })
-})
-
-app.get("/topic/:id", (req, res) => {
-    const id = req.params.id;
-    fs.readdir('./data', (err, files) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error X(');
-        }
-        fs.readFile('data/' + id, (err, data) => {
-            if (err) {
-                console.log(err);
-                res.status(500).send('Internal Server Error X(');
-            }
-            res.render('view2', {topics:files, title:id, description:data});
-        })
-    })
-})
-
-app.get("/topic/new", (req, res) => {
-    res.render('new');
 })
 
 app.listen(3000, () => console.log(`Server is running at http://localhost:3000`));
